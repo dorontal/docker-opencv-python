@@ -41,18 +41,8 @@ RUN apt update && apt upgrade && \
         # compile so including them just in case their absence
         # breaks something
         #
-        gstreamer-base-1.0 \
-        gstreamer-video-1.0 \
-        gstreamer-app-1.0 \
-        gstreamer-riff-1.0 \
-        gstreamer-pbutils-1.0 \
-        gstreamer-base-0.10 \
-        gstreamer-video-0.10 \
-        gstreamer-app-0.10 \
-        gstreamer-riff-0.10 \
-        gstreamer-pbutils-0.10 \
-        libdc1394-2 \
-        libdc1394 \
+        libdc1394-22-dev \
+        libgstreamer0.10-0 \
         #
         # highgui (imshow) needs libgtk packages
         #
