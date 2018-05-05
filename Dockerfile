@@ -25,15 +25,34 @@ RUN apt update && apt upgrade && \
         libpng12-dev \
         libtiff5-dev \
         libjasper-dev \
+        libgphoto2-dev \
         #
         # video i/o packages
         #
         libavcodec-dev \
         libavformat-dev \
+        libavresample-dev \
         libswscale-dev \
         libv4l-dev \
         libxvidcore-dev \
         libx264-dev \
+        #
+        # saw complaints about these not available during opencv
+        # compile so including them just in case their absence
+        # breaks something
+        #
+        gstreamer-base-1.0 \
+        gstreamer-video-1.0 \
+        gstreamer-app-1.0 \
+        gstreamer-riff-1.0 \
+        gstreamer-pbutils-1.0 \
+        gstreamer-base-0.10 \
+        gstreamer-video-0.10 \
+        gstreamer-app-0.10 \
+        gstreamer-riff-0.10 \
+        gstreamer-pbutils-0.10 \
+        libdc1394-2 \
+        libdc1394 \
         #
         # highgui (imshow) needs libgtk packages
         #
@@ -61,9 +80,9 @@ RUN mkdir -p "$OPENCV_SRC_DIR" && \
 
 # build opencv and opencv_contrib
 
-RUN cd "$OPENCV_SRC_DIR" && \
-    rm opencv.zip && \
-    rm opencv_contrib.zip && \
+RUN cd "$OPENCV_SRC_DIR/opencv-$OPENCV_VERSION" && \
+    # rm opencv.zip && \
+    # rm opencv_contrib.zip && \
     mkdir build && \
     cd build && \
     cmake -DBUILD_TIFF=On \
