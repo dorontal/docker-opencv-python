@@ -103,3 +103,9 @@ RUN cp /usr/include/x86_64-linux-gnu/python3.4m/pyconfig.h \
         -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.4m/ \
         -D PYTHON_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/ \
         -D BUILD_opencv_java=OFF ..
+
+RUN cd "$OPENCV_SRC_DIR/opencv-$OPENCV_VERSION/build" && \
+    make && \
+    make install && \
+    /bin/bash -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf' && \
+    ldconfig
