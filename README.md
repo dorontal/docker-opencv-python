@@ -21,18 +21,18 @@ getting OpenCV to install properly.
   figure out.
 * Clone this repository and cd to it
   ```
-  git clone https://github.com/dorontal/docker-opencv-python
-  cd docker-opencv-python
+  # git clone https://github.com/dorontal/docker-opencv-python
+  # cd docker-opencv-python
   ```
 * Run
   ```
-  build_image.sh
+  # ./build_image.sh
   ```
 #### Running inside a container with the opencv-python image
 
 * Run
   ```
-  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
+  # docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
       -it opencv-python bash
   ```
 
@@ -42,12 +42,11 @@ getting OpenCV to install properly.
 * To share a directory on your host with a directory inside
   your container, use
   ```
-  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
+  # docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
       --mount type=bind,source=<HOST DIR PATH>,target=<CONTAINER PATH> \
       --device=/dev/video0 -it opencv-python bash
   ```
-
-  NOTES:
+  Notes:
   * `<HOST DIR PATH>` is the directory containing the code you want to
     run, on the host machine - your regular development environemnt
     available before running the docker container
