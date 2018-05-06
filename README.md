@@ -35,7 +35,9 @@ getting OpenCV to install properly.
   docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
       -it opencv-python bash
   ```
-  and you'll be in a bash shell that can pop up x windows (e.g. try `xterm`).
+
+  and you'll be in a bash shell that can pop up x windows (e.g. try
+  `xterm`).
 
 * To share a directory on your host with a directory inside
   your container, use
@@ -52,7 +54,7 @@ getting OpenCV to install properly.
   * `<CONTAINER PATH>` is a directory in the container that will end
     up containing the contents of `<HOST DIR PATH>` in a read/write
     fashion
-  * `--device=/dev/video0` makes the host device /dev/video0 available
-    on the container as /dev/video0
+  * `--device=/dev/video0` makes the host device `/dev/video0` available
+    on the container (as `/dev/video0`)
   * `-v /tmp/.X11-unix:/tmp/.X11-unix` makes x socket on host
     replicated on container
