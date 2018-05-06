@@ -20,7 +20,6 @@ RUN apt-get install -y \
         curl \
         gfortran \
         git \
-        guvcview \
         ipython3 \
         ipython3-notebook \
         libatlas-base-dev \
@@ -61,6 +60,7 @@ RUN apt-get install -y \
         sphinx-common \
         texlive-latex-extra \
         unzip \
+        v4l-utils \
         wget \
         yasm
 
