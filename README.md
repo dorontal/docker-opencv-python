@@ -1,4 +1,12 @@
-Here's a container image with Ubuntu 16.04 LTS + OpenCV 3.4.1 + Python3 for ya.
+# OpenCV 3.4.1 & Python3 (optimized, with GUI & video grabbing)
+
+Here's a container image based on debian:jessie with:
+
+* OpenCV 3.4.1
+* Python 3.4
+* GUI libraries (e.g. for cv2.imshow())
+* Optimizations (Lapack, Eigen, IPP)
+* Video grabbing libraries (ffmpeg, v4l, GStreamer)
 
 It enables you to run any code that uses the OpenCV library, even GUI
 code, on any OS that can run Docker - therefore you now can run your
