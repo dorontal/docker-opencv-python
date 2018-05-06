@@ -8,10 +8,8 @@ ENV OPENCV_SRC_DIR "/usr/local/src/opencv"
 ENV OPENCV_SRC_URL "https://github.com/opencv/opencv/archive"
 ENV OPENCV_CONTRIB_URL "https://github.com/opencv/opencv_contrib/archive"
 
-# make sure we first have
-# liblapack-dev \
-# liblapack3-dev \
-# libopenblas-dev \
+# [ no longer need the following 3 lapack and blas libraries as libatlas
+#   takes care of them: (liblapack-dev, liblapack3-dev, libopenblas-dev) ]
 RUN apt-get update && apt-get install apt-utils -y && apt-get upgrade -y
 RUN apt-get install -y \
         build-essential \
