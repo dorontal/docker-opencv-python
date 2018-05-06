@@ -27,7 +27,6 @@ RUN apt-get install -y \
         libavcodec-dev \
         libavformat-dev \
         libavresample-dev \
-        libdc1394-22-dev \
         libeigen3-dev \
         libgphoto2-dev \
         libgstreamer-plugins-base1.0-dev \
