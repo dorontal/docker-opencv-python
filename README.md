@@ -39,10 +39,10 @@ getting OpenCV to install properly.
 * To share a directory on your host with a directory inside
   your container, use
   ```
-  Docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix  --mount type=bind,source=<HOST_DIR_PATH>,target=<CONTAINER_PATH> -it opencv-python  bash
+  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix --mount type=bind,source=<HOST DIR PATH>,target=<CONTAINER PATH> -it opencv-python bash
   ```
-  where `HOST_DIR_PATH` is the directory containing the code you want to
+  where `<HOST DIR PATH>` is the directory containing the code you want to
   run, on the host machine - your regular development environemnt available
-  before running the docker container. `CONTAINER_PATH` is a directory in
-  the container that will end up containing the contents of `HOST_DIR_PATH`
+  before running the docker container. `<CONTAINER PATH>` is a directory in
+  the container that will end up containing the contents of `<HOST DIR PATH>`
   in a read/write fashion.
