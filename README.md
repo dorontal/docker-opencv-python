@@ -39,8 +39,10 @@ getting OpenCV to install properly.
   and you'll be in a bash shell that can pop up x windows (e.g. try
   `xterm`).
 
-* To share a directory on your host with a directory inside
-  your container, use
+* Here's an example where you share the contents of a directory on the
+  host (`<HOST DIR PATH>`) on a directory inside your container
+  (`<CONTAINER PATH>`); also sharing the video device `/dev/video0` from
+  host to container, as well as sharing the X11 socket for display:
   ```
   # docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
       --mount type=bind,source=<HOST DIR PATH>,target=<CONTAINER PATH> \
