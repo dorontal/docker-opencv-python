@@ -32,17 +32,27 @@ getting OpenCV to install properly.
 
 * Run
   ```
-  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -it opencv-python bash
+  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
+      -it opencv-python bash
   ```
   and you'll be in a bash shell that can pop up x windows (e.g. try `xterm`).
 
 * To share a directory on your host with a directory inside
   your container, use
   ```
-  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix --mount type=bind,source=<HOST DIR PATH>,target=<CONTAINER PATH> -it opencv-python bash
+  docker run -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
+      --mount type=bind,source=<HOST DIR PATH>,target=<CONTAINER PATH> \
+      --device=/dev/video0 -it opencv-python bash
   ```
-  where `<HOST DIR PATH>` is the directory containing the code you want to
-  run, on the host machine - your regular development environemnt available
-  before running the docker container. `<CONTAINER PATH>` is a directory in
-  the container that will end up containing the contents of `<HOST DIR PATH>`
-  in a read/write fashion.
+
+  NOTES:
+  * `<HOST DIR PATH>` is the directory containing the code you want to
+    run, on the host machine - your regular development environemnt
+    available before running the docker container
+  * `<CONTAINER PATH>` is a directory in the container that will end
+    up containing the contents of `<HOST DIR PATH>` in a read/write
+    fashion
+  * `--device=/dev/video0` makes the host device /dev/video0 available
+    on the container as /dev/video0
+  * `-v /tmp/.X11-unix:/tmp/.X11-unix` makes x socket on host
+    replicated on container

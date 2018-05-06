@@ -20,6 +20,7 @@ RUN apt-get install -y \
         curl \
         gfortran \
         git \
+        guvcview \
         ipython3 \
         ipython3-notebook \
         libatlas-base-dev \
