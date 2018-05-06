@@ -31,6 +31,7 @@ RUN apt-get install -y \
         libgphoto2-dev \
         libgstreamer-plugins-base1.0-dev \
         libgtk2.0-dev \
+        libcanberra-gtk-dev \
         libjasper-dev \
         libjpeg-dev \
         liblapacke-dev \
