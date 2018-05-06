@@ -1,4 +1,4 @@
-# OpenCV 3.4.1 & Python3 (optimized, with GUI & video grabbing)
+## Optimized OpenCV 3.4.1 + Python3 (with GUI and Video)
 
 Here's a container image based on debian:jessie with:
 
@@ -13,9 +13,9 @@ code, on any OS that can run Docker - therefore you now can run your
 OpenCV programs on almost any OS, without spending too much time
 getting OpenCV to install properly.
 
-## Getting started
+### Getting started
 
-### Creating the Docker image
+#### Creating the Docker image
 
 * Install Docker on your OS - we'll leave those details up to you to
   figure out.
@@ -28,7 +28,7 @@ getting OpenCV to install properly.
   ```
   build_image.sh
   ```
-### Running inside a container with the opencv-python image
+#### Running inside a container with the opencv-python image
 
 * Run
   ```
