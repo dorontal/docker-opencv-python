@@ -7,11 +7,16 @@ ENV OPENCV_SRC_DIR "/usr/local/src/opencv"
 # opencv source directory urls
 ENV OPENCV_SRC_URL "https://github.com/opencv/opencv/archive"
 ENV OPENCV_CONTRIB_URL "https://github.com/opencv/opencv_contrib/archive"
+# set this env variable to stop the debconf warnings due no TERM set
+ENV DEBIAN_FRONTEND=noninteractive
 
-# [ no longer need the following 3 lapack and blas libraries as libatlas
-#   takes care of them: (liblapack-dev, liblapack3-dev, libopenblas-dev) ]
-RUN apt-get update && apt-get install apt-utils -y && apt-get upgrade -y
-RUN apt-get install -y \
+# NOTE: No longer need (liblapack-dev, liblapack3-dev,
+# libopenblas-dev) because libatlast replaces them all
+
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get upgrade -y && apt-get install -y --no-install-recommends \
+        apt-utils \
         build-essential \
         ccache \
         cmake \
@@ -82,26 +87,26 @@ RUN cp /usr/include/x86_64-linux-gnu/python3.4m/pyconfig.h \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
-        -D CMAKE_INSTALL_PREFIX=/usr/local \
-        -D INSTALL_C_EXAMPLES=ON \
-        -D INSTALL_PYTHON_EXAMPLES=ON \
-        -D OPENCV_EXTRA_MODULES_PATH="$OPENCV_SRC_DIR/opencv_contrib-$OPENCV_VERSION/modules" \
-        -D BUILD_EXAMPLES=ON \
-        -D WITH_TBB=ON \
-        -D WITH_V4L=ON \
-        -D WITH_LIBV4L=ON \
-        -D WITH_IPP=ON \
-        -D WITH_OPENCL=ON \
-        -D WITH_OPENGL=ON \
-        -D WITH_EIGEN=ON \
-        -D WITH_CUDA=OFF \
-        -D INSTALL_C_EXAMPLES=ON \
-        -D PYTHON_EXECUTABLE=/usr/bin/python3 \
-        -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so \
-        -D PYTHON_INCLUDE_DIR=/usr/include/python3.4m/ \
-        -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.4m/ \
-        -D PYTHON_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/ \
-        -D BUILD_opencv_java=OFF ..
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D INSTALL_C_EXAMPLES=ON \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D OPENCV_EXTRA_MODULES_PATH="$OPENCV_SRC_DIR/opencv_contrib-$OPENCV_VERSION/modules" \
+    -D BUILD_EXAMPLES=ON \
+    -D WITH_TBB=ON \
+    -D WITH_V4L=ON \
+    -D WITH_LIBV4L=ON \
+    -D WITH_IPP=ON \
+    -D WITH_OPENCL=ON \
+    -D WITH_OPENGL=ON \
+    -D WITH_EIGEN=ON \
+    -D WITH_CUDA=OFF \
+    -D INSTALL_C_EXAMPLES=ON \
+    -D PYTHON_EXECUTABLE=/usr/bin/python3 \
+    -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.4m.so \
+    -D PYTHON_INCLUDE_DIR=/usr/include/python3.4m/ \
+    -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.4m/ \
+    -D PYTHON_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/ \
+    -D BUILD_opencv_java=OFF ..
 
 RUN cd "$OPENCV_SRC_DIR/opencv-$OPENCV_VERSION/build" && \
     make && \
