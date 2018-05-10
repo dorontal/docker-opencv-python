@@ -21,6 +21,7 @@ RUN apt-get upgrade -y && apt-get install -y --no-install-recommends \
         ccache \
         cmake \
         curl \
+        emacs \
         gfortran \
         git \
         ipython3 \
@@ -52,6 +53,7 @@ RUN apt-get upgrade -y && apt-get install -y --no-install-recommends \
         libvorbis-dev \
         libx264-dev \
         libxvidcore-dev \
+        net-tools \
         perl \
         pkg-config \
         python3-matplotlib \
