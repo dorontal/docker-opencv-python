@@ -1,8 +1,8 @@
-## Optimized OpenCV 3.4.1 + Python3 (with GUI and Video)
+## Optimized OpenCV 3.4.2 + Python3 (with GUI and Video)
 
 Here's a container image based on debian:jessie with:
 
-* OpenCV 3.4.1
+* OpenCV 3.4.2
 * Python 3.4
 * GUI libraries (e.g. for cv2.imshow())
 * Optimizations (Lapack, Eigen, IPP)

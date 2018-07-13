@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 # change opencv version here to the one you want installed
-ENV OPENCV_VERSION "3.4.1"
+ENV OPENCV_VERSION "3.4.2"
 # directory where sources of opencv are brought in
 ENV OPENCV_SRC_DIR "/usr/local/src/opencv"
 # opencv source directory urls
