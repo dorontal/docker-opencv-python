@@ -4,8 +4,19 @@
 # * Run this as sudo.
 # * See 'http://milq.github.io/install-opencv-ubuntu-debian'.
 # * Video won't work, unless you follow instructions by yinguobing
-#   to first install ffmpeg, see: 
+#   to first install ffmpeg, see:
 #       https://github.com/opencv/opencv/issues/9794
+
+################### setting up a virtual environment ###########################
+# pip3 install virtualenv virtualenvwrapper
+# echo -e "\n# virtualenv and virtualenvwrapper" >> ~/.profile
+# echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.profile
+# echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.profile
+# echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.profile
+# source ~/.profile
+# mkvirtualenv cv -p python3
+# workon cv
+################################################################################
 
 CV_VERSION='4.0.0'
 MYDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -93,17 +104,6 @@ mv "opencv_contrib-$CV_VERSION" opencv_contrib
 cp $MYDIR/sobelfilterwidget.cpp \
    $MYDIR/opencv_contrib/modules/cvv/src/qtutil/filter/sobelfilterwidget.cpp
 
-################################################################################
-# pip3 install virtualenv virtualenvwrapper
-# echo -e "\n# virtualenv and virtualenvwrapper" >> ~/.profile
-# echo "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.profile
-# echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.profile
-# echo "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.profile
-# source ~/.profile
-# mkvirtualenv cv -p python3
-# workon cv
-################################################################################
-
 # create build directory
 
 cd opencv
@@ -111,11 +111,13 @@ mkdir build
 cd build
 
 # -D WITH_IPP=ON \
-# -D PYTHON_EXECUTABLE=/usr/bin/python3 \
-# -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.5m.so \
-# -D PYTHON_INCLUDE_DIR=/usr/include/python3.5m/ \
-# -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.5m/ \
-# -D PYTHON_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/ \
+
+PYTHON_EXECUTABLE="$HOME/.virtualenvs/cv/bin/python3"
+PYTHON_LIBRARY="/usr/lib/arm-linux-gnueabihf/libpython3.5m.so"
+PYTHON_INCLUDE_DIR="/usr/include/python3.5m/"
+PYTHON_INCLUDE_DIR2="/usr/include/arm-linux-gnueabihf/python3.5m/"
+PYTHON_NUMPY_INCLUDE_DIRS="/usr/lib/python3/dist-packages/numpy/core/include/"
+
 cmake \
    -D CMAKE_BUILD_TYPE=RELEASE \
    -D CMAKE_INSTALL_PREFIX=/usr/local \
@@ -141,8 +143,14 @@ cmake \
    -D WITH_EIGEN=ON \
    -D WITH_CUDA=OFF \
    -D BUILD_opencv_java=OFF \
+   -D PYTHON_EXECUTABLE="$PYTHON_EXECUTABLE" \
+   -D PYTHON_LIBRARY="$PYTHON_LIBRARY" \
+   -D PYTHON_INCLUDE_DIR="$PYTHON_INCLUDE_DIR" \
+   -D PYTHON_INCLUDE_DIR2="$PYTHON_INCLUDE_DIR2" \
+   -D PYTHON_NUMPY_INCLUDE_DIRS="$PYTHON_NUMPY_INCLUDE_DIRS" \
    ..
 
+exit 0
 make -j4
 make install
 ldconfig
