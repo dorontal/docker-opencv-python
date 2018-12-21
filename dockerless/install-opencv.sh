@@ -80,6 +80,11 @@ cmake \
    -D PYTHON_NUMPY_INCLUDE_DIRS="$PYTHON_NUMPY_INCLUDE_DIRS" \
    ..
 
+
+# if /etc/dphys-swapfile has CONF_SWAPSIZE=100, change 100 to 2048
+# sudo /etc/init.d/dphys-swapfile stop
+# sudo /etc/init.d/dphys-swapfile start
+
 make -j4
 
 # next, execute these commands as root:
@@ -91,3 +96,5 @@ make -j4
 #
 # cd ~/env/cv/lib/python3.5/site-packages
 # ln -s /usr/local/python/cv2 .
+
+# now change back /etc/dphys-swapfile to CONF_SWAPSIZE=100
