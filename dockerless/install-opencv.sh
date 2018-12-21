@@ -81,5 +81,13 @@ cmake \
    ..
 
 make -j4
-make install
-ldconfig
+
+# next, execute these commands as root:
+#
+# sudo make install
+# sudo ldconfig
+
+# next, execute these commands as non-root:
+#
+# cd ~/env/cv/lib/python3.5/site-packages
+# ln -s /usr/local/python/cv2 .
