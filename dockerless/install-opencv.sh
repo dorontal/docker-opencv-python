@@ -13,12 +13,15 @@ CV_VERSION='4.0.0'
 # mkdir ./cv/src
 ################################################################################
 
-# NOTES:
-# 1) do not run this as sudo!
-# 2) cv virtualenv (see comment above) must be activated
+# NOTE: do not run this as sudo!
 
-cd ~/env/cv/src
-echo "Installing opencv in directory: `pwd`"
+cd ~/env
+
+source ./cv/bin/activate
+
+cd ./cv/src
+
+echo "Compiling opencv in: `pwd`"
 
 # download opencv
 
